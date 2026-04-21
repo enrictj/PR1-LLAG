@@ -1,6 +1,4 @@
 from collections import deque
-
-
 class AFN:
     def __init__(self, estats, alfabet, transicions, inicial, finals):
         self.estats = estats
@@ -8,8 +6,6 @@ class AFN:
         self.transicions = transicions
         self.inicial = inicial
         self.finals = finals
-
-
 class AFNL:
     def __init__(self, estats, alfabet, transicions, transicions_lambda, inicial, finals):
         self.estats = estats
@@ -18,15 +14,12 @@ class AFNL:
         self.transicions_lambda = transicions_lambda
         self.inicial = inicial
         self.finals = finals
-
-
 class AFD:
     def __init__(self):
         self.estats = set()
         self.transicions = dict()
         self.inicial = None
         self.finals = set()
-
 
 def lambda_clausura(estats, transicions_lambda):
     clausura = set(estats)
@@ -38,7 +31,6 @@ def lambda_clausura(estats, transicions_lambda):
                 clausura.add(desti)
                 cua.append(desti)
     return frozenset(clausura)
-
 
 def determinitzar_afn(afn):
     afd = AFD()
@@ -69,7 +61,6 @@ def determinitzar_afn(afn):
             afd.finals.add(estat)
 
     return afd
-
 
 def determinitzar_afnl(afnl):
     afd = AFD()
@@ -102,7 +93,6 @@ def determinitzar_afnl(afnl):
 
     return afd
 
-
 def mostrar_afn(afn):
     print("ESTATS:")
     print(" ", afn.estats)
@@ -116,7 +106,6 @@ def mostrar_afn(afn):
     print("\nTRANSICIONS:")
     for (estat, simbol), desti in afn.transicions.items():
         print(f"  {estat} --{simbol}--> {desti}")
-
 
 def mostrar_afnl(afnl):
     print("ESTATS:")
@@ -136,7 +125,6 @@ def mostrar_afnl(afnl):
     for estat, desti in afnl.transicions_lambda.items():
         print(f"  {estat} --λ--> {desti}")
 
-
 def mostrar_afd(afd, mostrar_mort=True):
     def nom(e):
         return '∅' if not e else str(set(e))
@@ -155,7 +143,6 @@ def mostrar_afd(afd, mostrar_mort=True):
     print("\nTRANSICIONS:")
     for (estat, simbol), desti in afd.transicions.items():
         print(f"  {nom(estat)} --{simbol}--> {nom(desti)}")
-
 
 afn = AFN(
     estats={'q0', 'q1', 'q2'},
@@ -180,8 +167,6 @@ print("=" * 40)
 afd1 = determinitzar_afn(afn)
 mostrar_afd(afd1)
 
-
-# ── Exemple (problema 2) ───────────────────────────────────────────────────────
 afnl = AFNL(
     estats={0, 1, 2, 3, 4, 5, 6},
     alfabet={'0', '1'},
