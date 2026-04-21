@@ -27,11 +27,6 @@ def exemple1():
     afd = determinitzar_afn(afn)
     mostrar_afd(afd)
 
-    print("\nPROVES:")
-    for paraula in ["ab", "aab", "abb", "b", "ba"]:
-        resultat = "ACCEPTA" if afd.accepta(paraula) else "REBUTJA"
-        print(f"  '{paraula}' -> {resultat}")
-
 
 def exemple2():
     afnl = AFNL(
