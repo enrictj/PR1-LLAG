@@ -2,9 +2,6 @@ class AFN:
     """Autòmat Finit No determinista."""
 
     def __init__(self, estats, alfabet, transicions, inicial, finals):
-        assert inicial in estats, f"L'estat inicial '{inicial}' no és a estats"
-        assert set(finals) <= set(estats), "Hi ha estats finals fora de estats"
-
         self.estats = estats
         self.alfabet = alfabet
         self.transicions = transicions
@@ -20,9 +17,6 @@ class AFNL:
     """Autòmat Finit No determinista amb transicions Lambda (epsilon)."""
 
     def __init__(self, estats, alfabet, transicions, transicions_lambda, inicial, finals):
-        assert inicial in estats, f"L'estat inicial '{inicial}' no és a estats"
-        assert set(finals) <= set(estats), "Hi ha estats finals fora de estats"
-
         self.estats = estats
         self.alfabet = alfabet
         self.transicions = transicions
@@ -45,12 +39,6 @@ class AFD:
         self.inicial = inicial
         self.finals = finals if finals is not None else set()
 
-    def accepta(self, paraula):
-        """Retorna True si l'AFD accepta la paraula donada."""
-        estat = self.inicial
-        for simbol in paraula:
-            estat = self.transicions.get((estat, simbol), frozenset())
-        return estat in self.finals
 
     def __repr__(self):
         return (f"AFD(estats={self.estats}, "
