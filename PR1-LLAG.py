@@ -190,12 +190,12 @@ afnl = AFNL(
 )
 
 print("\n" + "=" * 40)
-print(" AFN-λ ORIGINAL")
+print(" EXEMPLE 2 - AFN-λ ORIGINAL")
 print("=" * 40)
-mostrar_afn(afn)
+mostrar_afnl(afnl)
 
 print("\n" + "=" * 40)
-print("AFN-λ determinitzat")
+print("EXEMPLE 2 - AFN-λ DETERMINITZAT")
 print("=" * 40)
 afd2 = determinitzar_afnl(afnl)
 mostrar_afd(afd2)
